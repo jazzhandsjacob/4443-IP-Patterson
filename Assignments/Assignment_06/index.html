@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="main.css">
+
+    <title>Students</title>
+</head>
+
+<body>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <script>
+        $(function () {
+
+            $('body').append('<section class="grid" id="head"></section>');
+            $('#head').append('<h1>Assignment 06</h1>');
+            $('#head').append('<h3>Adding Pictures</h3>');
+            $('body').append('<section class="grid" id="students"></section>');
+
+
+            /**
+             * labels [array] : array of string col heads
+             * row [json] : json array of data
+             * id [int]   : integer id
+             */
+            function build_card(labels, row, id) {
+                var card = '<div class="item" id="card-' + id + '">';
+                card += '<table>';
+                for (var j = 0; j < labels.length; j++) {
+                    label = labels[j];
+                    data = row[labels[j]];
+
+                    if (label == 'first_name') {
+                        data = data
+                    }
+
+                    if (label == 'last_name'){
+                        data = data
+                    }
+                    // Adds the lable to 
+                    if (label == 'mustang_id'){
+                        data = 'M'+ data;
+                    }
+                    //should then list the info on the card
+                    card += '<tr><td class="data_label">' + (label) + '</td><td> : </td><td> ' + data + '</td></tr>';
+                }
+                //console.log(data);
+                card += '</table></div>';
+                return card;
+            }
+
+            /**
+             * labels [array] : array of string col heads
+             * data [json] : json array of data
+             */
+            function load_grid(labels, data) {
+                for (var i = 0; i < data.length; i++) {
+                    var card = build_card(labels, data[i], i);
+                    /////Should  not need these later/////
+                    $('#students').append(card);
+                    $('#card-' + i).append('<img src="card_services_data/' + data[i].photo
+                     + '"width = "85" heighth = "85">');
+                }
+            }
+            // passes the student_data in to the load_grid function
+            $.get("card_services_data/student_data.json")
+                .done(function (data) {
+                    //console.log(data);
+                    // Passes the First and Last name as well as the mustang id and photo 
+                    load_grid(['first_name','last_name','mustang_id'], data);
+                });
+        });
+    </script>
+</body>
+</html>
