@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a responsive photo gallery.">
+    <title>Photo Gallery &ndash; Layout Examples &ndash; Pure</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-"
+        crossorigin="anonymous">
+
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
+    <!--<![endif]-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    <!--[if lte IE 8]>
+            <link rel="stylesheet" href="css/layouts/gallery-old-ie.css">
+        <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="css/layouts/gallery.css">
+    <!--<![endif]-->
+</head>
+
+<body>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+        </script>
+    <script src="./api/js/image-upload.js"></script>
+
+
+
+    <div>
+        <div class="header">
+            <div class="pure-menu pure-menu-horizontal">
+                <a class="pure-menu-heading" href="">Photo Gallery</a href="index.html">
+
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item pure-menu-selected"><a href="upload_image.html"
+                            class="pure-menu-link">upload</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pure-g">
+            <div class="photo-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+                <a href="http://167.99.233.204/waldo/pictures/waldo_1.png">
+                    <img src="http://167.99.233.204/waldo/pictures/waldo_1.png" alt="Beach">
+                </a>
+
+                <aside class="photo-box-caption">
+                    <span>by Jacob</a></span>
+                </aside>
+            </div>
+
+            <div class="text-box pure-u-1 pure-u-md-1-2 pure-u-lg-2-3">
+                <div class="l-box">
+                    <h1 class="text-box-head">Find Waldo</h1>
+                    <!--<p class="text-box-subhead">A collection of beautiful photos gathered from Unsplash.com.</p>-->
+                </div>
+            </div>
+
+            <div class="photo-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+                <a href="http://167.99.233.204/waldo/pictures/waldo_2.png">
+                    <img src="http://167.99.233.204/waldo/pictures/waldo_2.png" alt="Meadow">
+                </a>
+
+                <aside class="photo-box-caption">
+                    <span>
+                        by Jacob</a>
+                    </span>
+                </aside>
+            </div>
+
+            <div class="photo-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+                <a href="http://167.99.233.204/waldo/pictures/waldo_3.png">
+                    <img src="http://167.99.233.204/waldo/pictures/waldo_3.png" alt="City">
+                </a>
+
+                <aside class="photo-box-caption">
+                    <span>
+                        by Jacob</a>
+                    </span>
+                </aside>
+            </div>
+
+            <div class="photo-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+                <a href="http://167.99.233.204/waldo/pictures/waldo_4.png">
+                    <img src="http://167.99.233.204/waldo/pictures/waldo_4.png" alt="Flowers">
+                </a>
+
+                <aside class="photo-box-caption">
+                    <span>
+                        by Jacob</a>
+                    </span>
+                </aside>
+            </div>
+
+            <div class="photo-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+                <a href="http://167.99.233.204/waldo/pictures/waldo_5.png">
+                    <img src="http://167.99.233.204/waldo/pictures/waldo_5.png" alt="Bridge">
+                </a>
+
+                <aside class="photo-box-caption">
+                    <span>
+                        by <a href="http://www.flickr.com/photos/charliefoster/">Charlie Foster</a>
+                    </span>
+                </aside>
+            </div>
+
+            <script>
+
+                // function load_grid( data) {
+                //     for (var i = 0; i < data.length; i++) {
+                //         var card = build_card( data[i], i);
+                //         /////Should  not need these later/////
+                //         $('body').append(card);
+                //         $('#photo-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-3-' + i).append(
+                //             '<img src="api/uploads/' + data[i].photo);
+                //     }
+                // }
+                
+                // $(function () {
+                //     $.get("http://167.99.233.204/waldo/api/?route=image")
+                //         .done(function (data) {
+                //             //load_grid(data)
+                //             console.log(data)
+                //         });
+                // });
+
+
+
+            </script>
+
+
+
+
+
+
+
+
+
+            <!-- Old photo submit button
+            <div class="pure-u-1 form-box">
+                <div class="l-box">
+                    <h2>Submit a Photo</h2>
+
+                    <form class="pure-form">
+                        <input type="text" placeholder="Photo URL" required>
+                        <button type="button" id="imageupload-reset" class="btn btn-primary">Reset</button>
+                        <button type="button" id="imageupload-upload" class="btn btn-primary" >Upload</button>
+                    </form>
+                </div>
+            </div> -->
+
+            <div class="pure-u-1">
+                <div class="l-box">
+                    <h2>Creating a Photo Gallery Layout</h2>
+
+                    <p>
+                        This page shows how to make a photo gallery using <a href="">Pure Grids</a>. Using Pure, we can
+                        create interesting layouts such as this photo gallery. This layout is fully responsive. We've
+                        added a bit of custom media queries on top of the responsive grid provided by Pure.
+                    </p>
+
+                    <p>
+                        We've also taken advantage of <a href="">Pure Forms</a> and <a href="">Pure Menus</a>. This
+                        example uses a form with the <code>pure-form</code> class name to create an inline form. We use
+                        <a href="">Pure Buttons</a> for the button styling.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            View the source of this layout to learn more. Made with love by the YUI Team.
+        </div>
+    </div>
+</body>
+
+</html>

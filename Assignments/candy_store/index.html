@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A layout example that shows off a responsive photo gallery.">
+    <title>Photo Gallery &ndash; Layout Examples &ndash; Pure</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-"
+        crossorigin="anonymous">
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
+    <!--<![endif]-->
+
+
+    <!--[if lte IE 8]>
+            <link rel="stylesheet" href="css/layouts/gallery-old-ie.css">
+        <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="css/layouts/gallery.css">
+    <link rel="stylesheet" href="main.css">
+    <!--<![endif]-->
+
+
+    <title>Request Page</title>
+</head>
+
+<body>
+    <script src="js/jquery.min.js"></script>
+
+
+    <div>
+        <div class="header">
+            <h1>Candy Search</h1>
+            <p>assignment 6</p>
+
+            <form class="pure-form">
+                <div class="pure-g">
+                    <div class="pure-u-1 pure-u-md-1-4">
+
+                        <label for="resultCount">Result Size:</label>
+                        <select id="resultCount">
+                            <option>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                        </select>
+                    </div>
+                    <!--Search bar-->
+                    <div class="pure-u-1 pure-u-md-1-4">
+                        <input id = "search"  type="text" class="pure-input-rounded">
+
+                    </div>
+                    <!--submit button-->
+                    <div class="pure-u-1 pure-u-md-1-4">
+                        <button type="submit" class="pure-button" id="submit">Search</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+
+
+
+</body>
+
+</body>
+<script>
+
+    
+    // ,'-'), 
+    //("#submit").click  google e.preventDefault()
+    // Should get anything with keyword lemon
+    $("#submit").click(function (e) {
+        e.preventDefault();
+        // get the value typed in from the searchbar
+        var key = $('#search').val();
+        //  REPLACE profgriffin.com WITH YOUR IP ADDRESS
+        $.get("http://167.99.233.204/candy_store/api?route=candy&column=title&keyword="+key+"&matchtype=wildcard&start=10&chunk=10")
+            .done(function (data) {
+                let json = data.data;
+                $('body').append('<div class="wrapper"></div>');
+                json.forEach(function (ele) {
+                    console.log(ele);
+                    // openes new div 'box'
+                    var box = '<div class="box"';
+                    // places the text data into the div 'box'
+                    let img = '<img id="' + ele.id + '" src="' + ele.original_image_url + '".>';
+                    var info = '<p class = "text" .>' + ele.title + '<br>Amount: ' + ele.amount + "   Price: "
+                    + ele.price + '<br><br>' + ele.description;
+                    // closes div 'box'
+                    box += '</p></div>';
+                    // attaches image and its corresponding data to the div
+                    $('.wrapper').append(img, info)
+                });
+            });
+    });
+</script>
+
+
+</html>

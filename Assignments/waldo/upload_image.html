@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <title>bootstrap-imageupload</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-"
+        crossorigin="anonymous">
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css">
+<![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
+    <!--<![endif]-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <style>
+        body {
+            padding-top: 70px;
+        }
+
+        .imageupload {
+            margin: 20px 0;
+        }
+
+        /**
+ * bootstrap-imageupload v1.1.2
+ * https://github.com/egonolieux/bootstrap-imageupload
+ * Copyright 2016 Egon Olieux
+ * Released under the MIT license
+ */
+
+        .imageupload.imageupload-disabled {
+            cursor: not-allowed;
+            opacity: 0.60;
+        }
+
+        .imageupload.imageupload-disabled>* {
+            pointer-events: none;
+        }
+
+        .imageupload .panel-title {
+            margin-right: 15px;
+            padding-top: 8px;
+        }
+
+        .imageupload .alert {
+            margin-bottom: 10px;
+        }
+
+        .imageupload .btn-file {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .imageupload .btn-file input[type="file"] {
+            cursor: inherit;
+            display: block;
+            font-size: 100px;
+            min-height: 100%;
+            min-width: 100%;
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            text-align: right;
+            top: 0;
+        }
+
+        .imageupload .file-tab button {
+            display: none;
+        }
+
+        .imageupload .file-tab .thumbnail {
+            margin-bottom: 10px;
+        }
+
+        .imageupload .url-tab {
+            display: none;
+        }
+
+        .imageupload .url-tab .thumbnail {
+            margin: 10px 0;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="pure-menu pure-menu-horizontal">
+            <a class="pure-menu-item pure-menu-selected"><a href="index.html" class="pure-menu-link">Photo Gallery</a>
+
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item pure-menu-selected"><a href="upload_image.html"
+                            class="pure-menu-link">upload</a></li>
+                            <a href="https://github.com/egonolieux/bootstrap-imageupload">GitHub</a>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
+                </ul>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- bootstrap-imageupload. -->
+        <div class="imageupload panel panel-default">
+            <div class="panel-heading clearfix">
+                <h3 class="panel-title pull-left">Upload Image</h3>
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-default active" id="buttonFile"> File</button>
+                    <button type="button" class="btn btn-default" id="buttonUrl">URL</button>
+                </div>
+            </div>
+            <div class="file-tab panel-body">
+                <label class="btn btn-default btn-file">
+                    <span>Browse</span>
+                    <!-- The file is stored here. -->
+                    <input type="file" name="image-file" id="inputFile">
+                </label>
+                <button type="button" class="btn btn-default">Remove</button>
+            </div>
+            <div class="url-tab panel-body">
+                <div class="input-group">
+                    <input type="text" class="form-control hasclear" placeholder="Image URL" id="inputUrl">
+                    <div class="input-group-btn">
+                        <!-- <button type="button" class="btn btn-default" id="submitUrl">Submit</button> -->
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default">Remove</button>
+                <!-- The URL is stored here. -->
+                <input type="hidden" name="image-url">
+            </div>
+        </div>
+
+        <!-- bootstrap-imageupload method buttons. 
+        <button type="button" id="imageupload-disable" class="btn btn-danger">Disable</button>
+        <button type="button" id="imageupload-enable" class="btn btn-success">Enable</button> -->
+        <button type="button" id="imageupload-reset" class="btn btn-primary">Reset</button>
+        <button type="button" id="imageupload-upload" class="btn btn-primary">Upload</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+        </script>
+    <script src="./api/js/image-upload.js"></script>
+
+    <script>
+
+
+
+        var $imageupload = $('.imageupload');
+        $imageupload.imageupload();
+
+
+        $('#imageupload-reset').on('click', function () {
+            $imageupload.imageupload('reset');
+            $(this).blur();
+        });
+
+        $('#buttonUrl').on('click', function () {
+            $("#imageupload-upload").prop('enable', true);
+            $("#submitUrl").prop('enable', true);
+        });
+
+        $('#buttonFile').on('click', function () {
+            $("#imageupload-upload").prop('enable', false);
+            $("#submitUrl").prop('disable', false);
+        });
+
+        $('#inputUrl').on('change', function () {
+            $("#imageupload-upload").prop('enable', true);
+            $("#submitUrl").prop('enable', true);
+        });
+
+
+        $('#imageupload-upload').on('click', function () {
+
+            var url_data = $('#inputUrl').val();
+            var file_data = $('#inputFile').prop('files')[0];
+
+            if (typeof file_data !== 'undefined') {
+                console.log(file_data);
+                var form_img_data = new FormData();
+                form_img_data.append('file', file_data);
+                $.ajax({
+                    url: "http://167.99.233.204/waldo/api/?route=image",
+                    type: "POST",
+                    data: form_img_data,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+
+            } else if (url_data.length > 0) {
+                $.post("http://167.99.233.204/waldo/api/?route=imageUrl", { file_url: url_data })
+                    .done(function (response) {
+                        console.log("urlstuff:");
+                        console.log(response);
+                        // var form_url_data = new FormData();
+                        // form_url_data.append('file', file_data);
+                        //  $.ajax({
+                        //      url: "http://167.99.233.204/waldo/api/?route=imageUrl",
+                        //      type: "POST",
+                        //      data: form_url_data,
+                        //      dataType : "json",
+                        //      contentType: "application/json; charset=utf-8",
+                        //      success: function (data) {
+                        //          console.log(data);
+                        //      }
+                        //  });
+
+                    });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
